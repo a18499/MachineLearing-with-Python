@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from matplotlib.pylab import rcParams
 rcParams['figure.figsize']=12,10
 
-x=np.array([i*np.pi/180 for i in range(60,300,4)])
+x=np.array([i*np.pi/180 for i in range(70,300,4)])
 np.random.seed(10)
 y=np.sin(x)+np.random.normal(0,0.15,len(x))
 

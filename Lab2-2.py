@@ -8,6 +8,8 @@ Created on Sun Feb 12 11:23:43 2017
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn import datasets, linear_model
+from sklearn.metrics import mean_squared_error
+from math import sqrt
 
 diabetes = datasets.load_diabetes()
 
@@ -26,12 +28,13 @@ regr.fit(diabetes_X_train,diabetes_y_train)
 
 print('Cofficient: \n',regr.coef_)
 
-print("Mean squared error: %.2f"%np.mean((regr.predict(diabetes_X_test)-diabetes_y_test)**2))
+print("Mean squared error: %.2f"%sqrt(np.mean((regr.predict(diabetes_X_test)-diabetes_y_test)**2)))
 
 print('Variance:%.2f'%regr.score(diabetes_X_test,diabetes_y_test))
-"""
+rms = sqrt(mean_squared_error(diabetes_y_test, regr.predict(diabetes_X_test)))
+print(rms)
+
 plt.scatter(diabetes_X_test,diabetes_y_test,color='black')
 plt.plot(diabetes_X_test,regr.predict(diabetes_X_test),color='blue',linewidth=3)
 
 plt.show()
-"""
